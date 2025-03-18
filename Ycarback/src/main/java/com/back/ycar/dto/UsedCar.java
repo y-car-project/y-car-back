@@ -2,8 +2,8 @@ package com.back.ycar.dto;
 
 public class UsedCar {
 	private int car_code, car_price, car_year, car_km;
-	private String car_name,car_fuel;
-	
+	private String car_name,car_fuel, car_img;
+	private Boolean car_weekly;
 	public int getCar_code() {
 		return car_code;
 	}
@@ -40,7 +40,20 @@ public class UsedCar {
 	public void setCar_fuel(String car_fuel) {
 		this.car_fuel = car_fuel;
 	}
-	public UsedCar(int car_code, int car_price, int car_year, int car_km, String car_name, String car_fuel) {
+	public String getCar_img() {
+		return car_img;
+	}
+	public void setCar_img(String car_img) {
+		this.car_img = car_img;
+	}
+	public Boolean getCar_weekly() {
+		return car_weekly;
+	}
+	public void setCar_weekly(Boolean car_weekly) {
+		this.car_weekly = car_weekly;
+	}
+	public UsedCar(int car_code, int car_price, int car_year, int car_km, String car_name, String car_fuel,
+			String car_img, Boolean car_weekly) {
 		super();
 		this.car_code = car_code;
 		this.car_price = car_price;
@@ -48,6 +61,8 @@ public class UsedCar {
 		this.car_km = car_km;
 		this.car_name = car_name;
 		this.car_fuel = car_fuel;
+		this.car_img = car_img;
+		this.car_weekly = car_weekly;
 	}
 	public UsedCar() {
 		super();
@@ -56,8 +71,9 @@ public class UsedCar {
 	@Override
 	public String toString() {
 		return "UsedCar [car_code=" + car_code + ", car_price=" + car_price + ", car_year=" + car_year + ", car_km="
-				+ car_km + ", car_name=" + car_name + ", car_fuel=" + car_fuel + "]";
+				+ car_km + ", car_name=" + car_name + ", car_fuel=" + car_fuel + ", car_img=" + car_img
+				+ ", car_weekly=" + car_weekly + "]";
 	}
 	
-
+	
 }

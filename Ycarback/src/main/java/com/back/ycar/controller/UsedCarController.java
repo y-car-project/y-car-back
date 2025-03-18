@@ -37,4 +37,22 @@ public class UsedCarController {
 			return null;
 		}
 	}
+	
+	@GetMapping("getWeeklyCars")
+	public List<UsedCar> getWeeklyCars() {
+		try {
+			Object o=storage.get("weeklyCars");
+			if(o==null) {
+				List<UsedCar> list=usedCarService.getWeeklyCars();
+				storage.put("weeklyCars", list);
+				return list;
+			}
+			return (List<UsedCar>)o;
+			 
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

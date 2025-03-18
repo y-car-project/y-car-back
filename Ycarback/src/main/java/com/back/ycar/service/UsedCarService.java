@@ -17,4 +17,8 @@ public class UsedCarService {
 	public List<UsedCar> getAllUsedCars() throws Exception {
 		return usedCarDao.getAllUsedCars();
 	}
+
+	public List<UsedCar> getWeeklyCars() throws Exception {
+		return usedCarDao.getWeeklyCars();
+	}
 }
