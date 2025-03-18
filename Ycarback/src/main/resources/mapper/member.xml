@@ -6,7 +6,7 @@
 <mapper namespace="com.back.ycar.dao.MemberDao">
 
   <select id="login" resultType="Member" parameterType = "Member" >
-    select * from member where email=#{email} and pwd = #{pwd}
+    select * from member where user_id=#{user_id} and user_pwd = #{user_pwd}
   </select>
   
   <insert id="insertMember" parameterType = "Member" >

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.back.ycar.dao.LoginDao">
+  
+  <insert id="insertToken" parameterType="Login">
+  	insert into login(user_id, user_token) values(#{user_id},#{user_token})
+  </insert>
+  
+  <delete id="deleteToken" parameterType="String">
+  	delete from login where user_token=#{user_token}
+  </delete>
+  
+  
+</mapper>
