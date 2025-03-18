@@ -1,4 +1,4 @@
-**/config/*.properties
+**/config/*.*
 
 HELP.md
 target/

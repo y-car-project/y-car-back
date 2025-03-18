@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.back.ycar.dao.MemberDao">
+
+  <select id="login" resultType="Member" parameterType = "Member" >
+    select * from member where user_id=#{user_id} and user_pwd = #{user_pwd}
+  </select>
+  
+  <insert id="insertMember" parameterType = "Member" >
+    insert into member(user_id, user_name, user_email, user_pwd, user_phone) values(#{user_id},#{user_name},#{user_email},#{user_pwd},#{user_phone})
+  </insert>
+  
+  <update id="updateMember" parameterType = "Member" >
+    update member set nickname = #{nickname} where email=#{email} and pwd=#{pwd}
+  </update>
+  
+  <delete id="deleteMember" parameterType="String">
+  	delete member where email = #{email}
+  </delete>
+  
+  <select id="existsByUserId" parameterType="string" resultType="boolean">
+    SELECT CASE WHEN COUNT(*) > 0 THEN false ELSE true END
+    FROM member
+    WHERE user_id = #{userId}
+  </select>
+</mapper>
