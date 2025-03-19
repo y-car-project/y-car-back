@@ -24,7 +24,10 @@ public class CarController {
             @RequestParam("car_price") int carPrice,
             @RequestParam("car_year") int carYear,
             @RequestParam("car_km") int carKm,
-            @RequestParam("car_fuel") String carFuel) {
+            @RequestParam("car_fuel") String carFuel,
+            @RequestParam("car_img") String carImg
+
+            ) {
         try {
             Car car = new Car();
             car.setCarName(carName);
@@ -32,7 +35,8 @@ public class CarController {
             car.setCarYear(carYear);
             car.setCarKm(carKm);
             car.setCarFuel(carFuel);
-            
+            car.setCarImg(carImg);
+
             carService.registerCar(car);
             
             return ResponseEntity.ok("차량 등록 성공");

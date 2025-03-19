@@ -10,7 +10,7 @@ import com.back.ycar.dto.Car;
 public class CarService {
     
     @Autowired
-    private CarDao carDao;
+    CarDao carDao;
     
     public void registerCar(Car car) throws Exception {
         // 등록 로직 (필요에 따라 트랜잭션 처리 등 추가)

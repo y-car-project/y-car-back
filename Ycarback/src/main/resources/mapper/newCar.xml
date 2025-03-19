@@ -5,7 +5,7 @@
 
 <mapper namespace="com.back.ycar.dao.CarDao">
   <insert id="insertCar" parameterType="Car" useGeneratedKeys="true" keyProperty="id">
-    INSERT INTO cars (car_name, car_price, car_year, car_km, car_fuel)
-    VALUES (#{carName}, #{carPrice}, #{carYear}, #{carKm}, #{carFuel})
+    INSERT INTO car (car_name, car_price, car_year, car_km, car_fuel, car_img)
+    VALUES (#{carName}, #{carPrice}, #{carYear}, #{carKm}, #{carFuel}, #{carImg})
   </insert>
 </mapper>

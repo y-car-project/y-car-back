@@ -1,16 +1,14 @@
 package com.back.ycar.dto;
 
-import java.util.Date;
-
 public class Car {
     private int id;
     private String carName;
     private int carPrice;
     private int carYear;
     private int carKm;
-    private String carFuel;
+    private String carFuel, carImg;
     
-	public Car(int id, String carName, int carPrice, int carYear, int carKm, String carFuel) {
+	public Car(int id, String carName, int carPrice, int carYear, int carKm, String carFuel, String carImg) {
 		super();
 		this.id = id;
 		this.carName = carName;
@@ -18,6 +16,7 @@ public class Car {
 		this.carYear = carYear;
 		this.carKm = carKm;
 		this.carFuel = carFuel;
+		this.carImg = carImg;
 	}
 
 	public Car() {
@@ -62,12 +61,19 @@ public class Car {
 		this.carFuel = carFuel;
 	}
 
+	public String getCarImg() {
+		return carImg;
+	}
+
+	public void setCarImg(String carImg) {
+		this.carImg = carImg;
+	}
+
 	@Override
 	public String toString() {
 		return "Car [id=" + id + ", carName=" + carName + ", carPrice=" + carPrice + ", carYear=" + carYear + ", carKm="
-				+ carKm + ", carFuel=" + carFuel + "]";
+				+ carKm + ", carFuel=" + carFuel + ", carImg=" + carImg + "]";
 	}
-
-
+	
     
 }
