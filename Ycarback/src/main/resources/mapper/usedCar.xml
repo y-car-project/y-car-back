@@ -5,11 +5,10 @@
   
 <mapper namespace="com.back.ycar.dao.UsedCarDao">
   <select id="getAllUsedCars" resultType="UsedCar" >
-    select * from car
+    select * from car order by car_code desc;
   </select>
   
   <select id="getWeeklyCars" resultType="UsedCar" >
     select * from car where car_weekly = true
   </select>
-  
 </mapper>
