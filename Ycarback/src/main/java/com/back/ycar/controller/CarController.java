@@ -1,12 +1,11 @@
 package com.back.ycar.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.back.ycar.cache.CacheStorage;
 import com.back.ycar.dto.Car;
 import com.back.ycar.service.CarService;
 
@@ -18,6 +17,9 @@ public class CarController {
     @Autowired
     private CarService carService;
 
+    @Autowired
+    private CacheStorage cacheStorage;
+    
     @PostMapping
     public ResponseEntity<String> registerCar(
             @RequestParam("car_name") String carName,
@@ -26,8 +28,7 @@ public class CarController {
             @RequestParam("car_km") int carKm,
             @RequestParam("car_fuel") String carFuel,
             @RequestParam("car_img") String carImg
-
-            ) {
+    ) {
         try {
             Car car = new Car();
             car.setCarName(carName);
@@ -39,6 +40,11 @@ public class CarController {
 
             carService.registerCar(car);
             
+            // 캐시 무효화: 새로운 차량 등록 후 "firstPageCars" 캐시를 삭제
+            cacheStorage.remove("firstPageCars");
+            // 필요에 따라 "weeklyCars"도 무효화할 수 있습니다.
+            // cacheStorage.remove("weeklyCars");
+            
             return ResponseEntity.ok("차량 등록 성공");
         } catch (Exception e) {
             e.printStackTrace();
@@ -46,4 +52,3 @@ public class CarController {
         }
     }
 }
-
