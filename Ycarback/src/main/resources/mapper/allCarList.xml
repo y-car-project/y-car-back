@@ -5,6 +5,6 @@
 
 <mapper namespace="com.back.ycar.dao.AllCarListDao">
   <select id="getAllCarList" resultType="AllCarList" >
-    select * from car_list
+    select * from car_list 
   </select>
 </mapper>
