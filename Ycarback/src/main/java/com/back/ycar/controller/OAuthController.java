@@ -2,10 +2,15 @@ package com.back.ycar.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.back.ycar.dto.GoogleOAuth;
+import com.back.ycar.service.GoogleLoginService;
 import com.back.ycar.service.OAuthService;
 
 import jakarta.servlet.http.Cookie;
@@ -50,4 +55,6 @@ public class OAuthController {
 	}
 		return "redirect:http://localhost:3000/";
 	}
+	
+
 }
