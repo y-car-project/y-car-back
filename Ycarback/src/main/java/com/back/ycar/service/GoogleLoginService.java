@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
@@ -17,11 +18,15 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class GoogleLoginService {
-
-    private final String CLIENT_ID = "706458939215-90fes4i2n9l47bb673bmqap2lfbgasjl.apps.googleusercontent.com";
-    private final String CLIENT_SECRET = "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";
-    private final String REDIRECT_URI = "http://localhost:3000";
+    @Value("${google.oauth.client-id}")
+    private String CLIENT_ID;
     
+    @Value("${google.oauth.client-secret}")
+    private String CLIENT_SECRET;
+    
+    @Value("${google.oauth.redirect-uri}")
+    private String REDIRECT_URI;
+
     @Autowired
     LoginDao loginDao;
     
