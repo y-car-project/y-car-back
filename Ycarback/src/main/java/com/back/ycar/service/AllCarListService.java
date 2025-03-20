@@ -10,10 +10,10 @@ import com.back.ycar.dto.AllCarList;
 
 @Service
 public class AllCarListService {
-	
+
 	@Autowired
 	AllCarListDao allCarListDao;
-	
+
 	public List<AllCarList> getAllUsedCars() throws Exception {
 		return allCarListDao.getAllCarList();
 	}

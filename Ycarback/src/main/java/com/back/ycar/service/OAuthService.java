@@ -1,6 +1,10 @@
 package com.back.ycar.service;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Date;
@@ -18,10 +22,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class OAuthService {
 	@Value("${kakao.api.key}")
 	String KAKAO_API_KEY ;
-	
+
 	@Autowired
 	LoginDao loginDao;
-	
+
 	public void insertLoginInfo(String email, String kakaoToken) throws Exception {
 		Login loginInfo=new Login(email, kakaoToken, new Date());
 		loginDao.insertToken(loginInfo);
@@ -31,7 +35,7 @@ public class OAuthService {
 	    String access_Token = "";
 	    String refresh_Token = "";
 	    String reqURL = "https://kauth.kakao.com/oauth/token";
-	   
+
 	    try {
 	        URL url = new URL(reqURL);
 	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -47,7 +51,7 @@ public class OAuthService {
 	        sb.append("&prompt=login");
 	        sb.append("&redirect_uri=http://localhost:8080/kakaoLoginCallback");
 	        sb.append("&code=" + code);
-	        
+
 	        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 	        bw.write(sb.toString());
 	        bw.flush();
@@ -55,10 +59,10 @@ public class OAuthService {
 	        // 결과 코드가 200이라면 성공
 	        int responseCode = conn.getResponseCode();
 	        System.out.println("responseCode : " + responseCode);
-	        
+
 	        // 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
 	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-	        
+
 	        String line = "";
 	        String result = "";
 
@@ -84,8 +88,8 @@ public class OAuthService {
 	    }
 
 	    return access_Token;
-	}	
-	
+	}
+
 	public String getKakaoUser(String token) {
 	    String reqURL = "https://kapi.kakao.com/v2/user/me";
 
@@ -134,5 +138,5 @@ public class OAuthService {
 	        e.printStackTrace();
 	        return null;
 	    }
-	}	
+	}
 }

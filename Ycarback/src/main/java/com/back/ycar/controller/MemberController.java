@@ -21,10 +21,10 @@ import com.back.ycar.service.MemberService;
 @RestController
 @CrossOrigin("http://localhost:3000/")
 public class MemberController {
-	
+
 	@Autowired
 	private MemberService memberService;
-	
+
 	@PostMapping("logout")
 	public void logout(@RequestHeader String authorization) {
 		System.out.println(authorization);
@@ -35,16 +35,16 @@ public class MemberController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@PostMapping("tokenLogin")
 	public Map<String,String> tokenLogin(@RequestBody Member m) {
 		System.out.println(m);
-		
+
 		Map<String,String> responseMap=new HashMap<>();
-		
+
 		try {
 			Login loginInfo=memberService.tokenLogin(m);
-			
+
 			if(loginInfo!=null && loginInfo.getUser_id()!=null && loginInfo.getUser_token()!=null) {
 				responseMap.put("nickname", loginInfo.getUser_id());
 				responseMap.put("Authorization", loginInfo.getUser_token());
@@ -63,7 +63,7 @@ public class MemberController {
 	public Map<String, String> login(@RequestBody Member m) {
 	    System.out.println(m);
 	    Map<String, String> responseMap = new HashMap<>();
-	    
+
 	    try {
 	        m = memberService.login(m);
 	        if (m != null) {
@@ -97,7 +97,7 @@ public class MemberController {
 	    return ResponseEntity.ok(response);
 	}
 
-	
+
 	@PostMapping("insertMember")
 	public ResponseEntity<Map<String, String>> insertMember(@RequestBody Member m) {
 	    Map<String, String> response = new HashMap<>();
@@ -112,7 +112,7 @@ public class MemberController {
 	    }
 	}
 
-	
+
 	@PostMapping("updateMember")
 	public String updateMember(@RequestBody Member m) {
 		System.out.println(m);
@@ -125,7 +125,7 @@ public class MemberController {
 			return "email과 pwd 확인해 주세요";
 		}
 	}
-	
+
 	@PostMapping("deleteMember")
 	public String deleteMember(@RequestBody String email) {
 		System.out.println(email);
