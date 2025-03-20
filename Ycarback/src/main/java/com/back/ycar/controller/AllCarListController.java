@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.back.ycar.dto.AllCarList;
-import com.back.ycar.dto.UsedCar;
 import com.back.ycar.service.AllCarListService;
 
 @RestController
@@ -31,7 +30,7 @@ public class AllCarListController {
 				return list;
 			}
 			return (List<AllCarList>)o;
-			 
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

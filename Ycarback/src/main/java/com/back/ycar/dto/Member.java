@@ -1,9 +1,7 @@
 package com.back.ycar.dto;
 
-import java.util.Date;
-
 public class Member {
-	
+
 	private String user_id, user_name, user_email, user_pwd, user_phone;
 
 	public String getUser_id() {
@@ -53,7 +51,7 @@ public class Member {
 		return "Member [user_id=" + user_id + ", user_name=" + user_name + ", user_email=" + user_email + ", user_pwd="
 				+ user_pwd + ", user_phone=" + user_phone + "]";
 	}
-	
-	
+
+
 
 }

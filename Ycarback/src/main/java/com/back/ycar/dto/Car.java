@@ -7,7 +7,7 @@ public class Car {
     private int carYear;
     private int carKm;
     private String carFuel, carImg;
-    
+
 	public Car(int id, String carName, int carPrice, int carYear, int carKm, String carFuel, String carImg) {
 		super();
 		this.id = id;
@@ -23,7 +23,7 @@ public class Car {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -74,6 +74,6 @@ public class Car {
 		return "Car [id=" + id + ", carName=" + carName + ", carPrice=" + carPrice + ", carYear=" + carYear + ", carKm="
 				+ carKm + ", carFuel=" + carFuel + ", carImg=" + carImg + "]";
 	}
-	
-    
+
+
 }

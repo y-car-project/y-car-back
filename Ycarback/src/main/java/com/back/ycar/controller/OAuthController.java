@@ -17,18 +17,18 @@ public class OAuthController {
 
 	@Value("${kakao.api.key}")
 	String KAKAO_API_KEY ;
-	
+
 	@Autowired
 	OAuthService oAuthService;
-	
+
 	@GetMapping("kakaoLogin")
 	public String kakaoLogin() {
-		
-		return "redirect:https://kauth.kakao.com/oauth/authorize?client_id=" 
-		+ KAKAO_API_KEY 
+
+		return "redirect:https://kauth.kakao.com/oauth/authorize?client_id="
+		+ KAKAO_API_KEY
 				+ "&redirect_uri=http://localhost:8080/kakaoLoginCallback&response_type=code";
 	}
-	
+
 	@GetMapping("kakaoLoginCallback")
 	public String kakaoCallback(@RequestParam String code, HttpServletRequest request, HttpServletResponse response) throws Exception{
 	  System.out.println("사용자 동의 코드:" + code);
@@ -40,10 +40,10 @@ public class OAuthController {
 	  if (email != null) {
 		// db에 저장
 		oAuthService.insertLoginInfo(email, access_Token);
-			
+
 		Cookie c1 = new Cookie("email", email);
 		Cookie c2 = new Cookie("Authorization", access_Token);
-		
+
 		response.addCookie(c1);
 		response.addCookie(c2);
 
