@@ -68,12 +68,23 @@ public class UsedCar {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	public UsedCar(Car car) {
+	    this.car_code = car.getId();
+	    this.car_price = car.getCarPrice();
+	    this.car_year = car.getCarYear();
+	    this.car_km = car.getCarKm();
+	    this.car_name = car.getCarName();
+	    this.car_fuel = car.getCarFuel();
+	    this.car_img = car.getCarImg();
+	}
+
 	@Override
 	public String toString() {
 		return "UsedCar [car_code=" + car_code + ", car_price=" + car_price + ", car_year=" + car_year + ", car_km="
 				+ car_km + ", car_name=" + car_name + ", car_fuel=" + car_fuel + ", car_img=" + car_img
 				+ ", car_weekly=" + car_weekly + "]";
 	}
-	
-	
+
+
 }

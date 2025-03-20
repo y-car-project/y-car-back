@@ -3,10 +3,10 @@ package com.back.ycar.dto;
 import java.util.Date;
 
 public class Login {
-	
+
 	private String user_id, user_token;
 	private Date user_loginTime;
-	
+
 	public Login(String user_id, String user_token, Date user_loginTime) {
 		super();
 		this.user_id = user_id;
